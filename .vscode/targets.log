@@ -8,10 +8,12 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 28 23:30:49 2022
+# Make data base, printed on Mon May 30 17:07:55 2022
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -23,7 +25,7 @@ VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\cayod\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-986a3afb-61b6-4a60-877a-68d49b998838-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-fd67cc4c-f212-42c4-904f-7beca1582adf-sock
 # environment
 VSCODE_CWD = C:\Users\cayod\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -31,13 +33,15 @@ SYSTEMROOT = C:\Windows
 # environment
 PROCESSOR_LEVEL = 23
 # environment
-PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = %ProgramFiles%\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_28028_NIZMHSSZBNPKOZWK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_38320_MRCIXPJVSGBLCMZL
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -89,7 +93,7 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 28028
+VSCODE_PID = 38320
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -123,7 +127,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\cayod\AppData\Local\Microsoft\WindowsApps;C:\Users\cayod\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64;C:\MinGW\bin;
+PATH = C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\cayod\AppData\Local\Microsoft\WindowsApps;C:\Users\cayod\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64;C:\MinGW\bin
 # environment
 COMPUTERNAME = DESKTOP-5CBVUI6
 # default
@@ -134,6 +138,8 @@ MAKEFILES :=
 PROMPT = $P$G
 # environment
 LOGONSERVER = \\DESKTOP-5CBVUI6
+# environment
+CLIENTNAME = LPL32090CP
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -193,7 +199,7 @@ SUFFIXES :=
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
-SESSIONNAME = Console
+SESSIONNAME = RDP-Tcp#7
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -201,7 +207,7 @@ PROCESSOR_REVISION = 7100
 # environment
 PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 # variable set hash-table stats:
-# Load=94/1024=9%, Rehash=0, Collisions=11/118=9%
+# Load=97/1024=9%, Rehash=0, Collisions=12/121=10%
 
 # Pattern-specific Variable Values
 
@@ -209,7 +215,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
 
 # Directories
 
-# . (key c:/Users/cayod/OneDrive/Documents/Repos/PSoC6-Bluetooth-Wifi-Demo, mtime 1653795049): 6 files, no impossibilities.
+# . (key c:/Users/cayod/OneDrive/Documents/Repos/PSoC6-Bluetooth-Wifi-Demo, mtime 1653942761): 6 files, no impossibilities.
 
 # 6 files, no impossibilities in 1 directories.
 
@@ -274,6 +280,6 @@ GNUmakefile:
 # strcache performance: lookups = 16 / hit rate = 18%
 # hash-table stats:
 # Load=13/8192=0%, Rehash=0, Collisions=0/16=0%
-# Finished Make data base on Sat May 28 23:30:49 2022
+# Finished Make data base on Mon May 30 17:07:55 2022
 
  

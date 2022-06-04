@@ -19,12 +19,6 @@
         //mtb//
         "modustoolbox.toolsPath": "C:/Users/cayod/ModusToolbox/tools_2.4",
         "cortex-debug.armToolchainPath": "${config:modustoolbox.toolsPath}/gcc/bin",
-        "cortex-debug.openocdPath": "${config:modustoolbox.toolsPath}/openocd/bin/openocd",
-        "files.associations": {
-            "cycfg.h": "c",
-            "cycfg_peripherals.h": "c",
-            "cy_scb_uart.h": "c",
-            "cy_device_headers.h": "c"
-        }
+        "cortex-debug.openocdPath": "${config:modustoolbox.toolsPath}/openocd/bin/openocd"
     }
 }

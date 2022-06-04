@@ -46,13 +46,29 @@
 #include "cycfg.h"
 #include "cy_device_headers.h"
 
+#include <FreeRTOSConfig.h>
+#include <FreeRTOS.h>
+#include <task.h>
+
 #include <stdio.h>
+
+#include "cli_controller.h"
 
 
 #define IO_STDOUT_ENABLE
 #define IO_STDIN_ENABLE     
 #define IO_STDOUT_UART      Bridge_UART_HW
 #define IO_STDIN_UART       Bridge_UART_HW
+
+/* Task defs */
+#define LED_TASK_STACK      configMINIMAL_STACK_SIZE
+#define CLI_TASK_STACK      configMINIMAL_STACK_SIZE
+
+#define LED_TASK_PRIORITY   (1u) 
+#define CLI_TASK_PRIORITY   (1u) 
+
+#define _1S                 (1000UL)
+#define ONE_TICK            (1u)
 
 
 /* Assign divider type and number for UART */
@@ -62,10 +78,13 @@
 #define AUTO_GEN              (1u)
 
 
+void led_task(void* pvPort);
+void CLI_task(void* pvPort);
+
+
 int main(void)
 {
     cy_rslt_t result;
-    cy_stc_scb_uart_context_t uart_context;
 
     /* Initialize the device and board peripherals */
     result = cybsp_init() ;
@@ -74,23 +93,71 @@ int main(void)
         CY_ASSERT(0);
     }
 
+    /* Enable interrupts */
     __enable_irq();
-
-    cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
-
+    
     init_cycfg_all();
+ 
+    UBaseType_t ret;
 
-    Cy_SCB_UART_Init(UART_Debug_HW, &UART_Debug_config, &uart_context);
-    Cy_SCB_UART_Enable(UART_Debug_HW);
+    /* Creating LED task */
+    ret = xTaskCreate(led_task, "Led task", LED_TASK_STACK, NULL, LED_TASK_PRIORITY, NULL);
 
-    Cy_SCB_UART_PutString(UART_Debug_HW, "\r\n");
-    Cy_SCB_UART_PutString(UART_Debug_HW, "Hello world!\r\n");
+    if(ret == errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY) { CY_ASSERT(0); }
+
+    /* Creating CLI task */
+    ret = xTaskCreate(CLI_task, "CLI task", CLI_TASK_STACK, NULL, CLI_TASK_PRIORITY, NULL);
+
+    if(ret == errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY) { CY_ASSERT(0); }
+
+    /* Start the kernel */
+    vTaskStartScheduler();
+
+    /* Exiting Kernel. The unit must be haltred */
+    CY_ASSERT(0);
 
     for (;;)
     {
-        cyhal_gpio_toggle(CYBSP_USER_LED);
+        
+    }
+}
 
-        cyhal_system_delay_ms(500);
+
+/**
+ * @brief Process command line interface
+ * 
+ * @param pvPort 
+ */
+void CLI_task(void *pvPort)
+{
+    CLI_start();
+
+    for(;;)
+    {
+        CLI_process_commands();
+
+        /* Suspend task for one tick */
+        vTaskDelay(ONE_TICK);
+    }
+}
+
+
+/**
+ * @brief Toggle LED task for physical signaling
+ * 
+ * @param pvPort 
+ */
+void led_task(void* pvPort)
+{
+    /* Initialize GPIO */
+    cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+
+    for(;;)
+    {
+        cyhal_gpio_toggle(CYBSP_USER_LED);
+        
+        /* Wait 1 second to toggle the LED */
+        vTaskDelay(_1S);
     }
 }
 
