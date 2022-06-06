@@ -1,4 +1,0 @@
-[submodule "code/Wifi_BT_demo/FreeRTOS"]
-	path = code/Wifi_BT_demo/FreeRTOS
-	url = https://github.com/cduarte0306/FreeRTOS.git
-	branch = main
