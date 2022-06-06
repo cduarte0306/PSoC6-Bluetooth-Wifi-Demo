@@ -1,3 +1,13 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "cy_device_headers.h": "c",
+        "freertosconfig.h": "c",
+        "cycfg.h": "c",
+        "freertos_cli.h": "c",
+        "cy_scb_uart.h": "c",
+        "cycfg_peripherals.h": "c",
+        "stdio.h": "c",
+        "freertos.h": "c"
+    }
 }
